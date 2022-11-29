@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cart</title>
+    <link rel = "stylesheet" type = "text/css" href = "cart.css">
+    </head>
+    <body>
+
+      <div class="header">
+        <a class="active" href="homepage.html">Home</a>
+        <div class="header-right">
+          <a href="info.html">Information</a>
+          <a href="tickets.html">Tickets</a>
+          <a href="faq.html">FAQs</a>
+          <a href="cart.html">Cart</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+      </div>
+
+      <p> <img src="https://i.ibb.co/b2RJvGz/IMG-0756.jpg" width = "1500" height = "400"
+        alt="Tickets Picture" class="ticketspic"> </p>
+
+        <div id="packages">
+            <label>Package 1</label>
+            <input type="number" class="package" name="product1" id="product1" min="0" />
+            <label>Package 2</label>
+            <input type="number" class="package" name="product2" id="product2" min="0" />
+            <label>Package 3</label>
+            <input type="number" class="package" name="product3" id="product3" min="0" />
+
+            <label>Card Number</label> 
+            <input type="password" id="cardnum" required size="16" maxlength="16">
+            <label>CVV</label> 
+            <input type="password" id="cvv" required size="3" maxlength="4">
+            <label>Expiration Date</label> 
+            <input type="date" id="exp">
+            <br><br>
+            <button class="submitbutton" onclick="totalearningscalc()">Checkout</button>
+        </div><br>
+        <div id='earnings-display'>
+
+        </div>
+
+        <script>
+            function totalearningscalc(){
+                let product1 = document.getElementById("product1").value;
+                let product2 = document.getElementById("product2").value;
+                let product3 = document.getElementById("product3").value;
+                if(product1 < 0 || product2 < 0 || product3 < 0){
+                    alert("Item values must be greater than or equal to 0");
+                    return;
+                }
+                let subtotal = (product1 * 100) + (product2 * 250) + (product3 * 500);
+                let tax = subtotal * 0.0925;
+                let total = subtotal + tax; 
+                let text = "Subtotal : $"+subtotal.toFixed(2)+"<br>"+"Tax : $"+tax.toFixed(2)+"<br>"+"Total : $"+total.toFixed(2)+"<br><br><br>"+
+                "Thank you for your purchase!"+"<br>"+"Get ready for Bouncin' in da Bay!";
+                document.getElementById("earnings-display").innerHTML = text;
+                document.getElementById("earnings-display").className = "display";
+            }
+        </script>
+    </body>
+</html>
+</body>
+</html>
